@@ -27,7 +27,11 @@ require 'active_support'
 require 'active_support/core_ext/string/inflections'
 require 'active_support/core_ext/hash/indifferent_access'
 require 'active_support/core_ext/hash/conversions'
-require 'active_support/core_ext/class/inheritable_attributes'
+if ActiveSupport::VERSION::STRING < '3.2'
+  require 'active_support/core_ext/class/inheritable_attributes'
+else
+  require 'active_support/core_ext/class/attribute'
+end
 require 'active_support/core_ext/class/attribute_accessors'
 require 'active_support/core_ext/class/delegating_attributes'
 require 'active_support/core_ext/module/attribute_accessors'
